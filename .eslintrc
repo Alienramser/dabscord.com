@@ -1,0 +1,15 @@
+{
+  "extends": ["plugin:prettier/recommended"],
+  "rules": {
+    "vue/html-self-closing": [
+      "error",
+      {
+        "html": {
+          "void": "always"
+        }
+      }
+    ],
+    "space-before-function-paren": ["error", "never"],
+    "unicorn/number-literal-case": "off" // Disable the rule globally
+  }
+}
