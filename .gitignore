@@ -11,7 +11,7 @@ dist
 node_modules
 
 # Locales
-locales/*.json
+
 
 # Logs
 logs
