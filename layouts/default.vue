@@ -16,7 +16,7 @@ onMounted(() => {
     <div class="templateWrapper">
       <div class="loadingWrapper">
         <img
-          src="../assets/images/logoweb.webp"
+          src="../assets/images/dabscordicon.webp"
           alt="Monolith Loading Logo"
           height="100"
           width="100"
@@ -24,20 +24,12 @@ onMounted(() => {
         />
       </div>
       <div class="contentWrapper">
-        <div class="homeFrontPageMonolithLogoWrapper">
-        
-          <img
-            class="monolith_logo_header"
-            height="100"
-            widith="100"
-            alt="monolith.codes logo"
-            src="../assets/images/logoweb.webp"
-          />
-        </div>
-
         <div class="templateContentWrapper">
           <slot />
         </div>
+      </div>
+      <div class="footerWrapper">
+        
       </div>
     </div>
   </v-app>
@@ -70,14 +62,6 @@ onMounted(() => {
   }
 }
 
-.homeFrontPageMonolithLogoWrapper {
-  height: 20vh;
-  width: auto;
-  position: fixed;
-  z-index: 2;
-  //background-color: rgba(255, 166, 0, 0.37);
-}
-
 .loadingImage {
   animation: pulse 1.5s infinite alternate;
 
@@ -103,18 +87,14 @@ onMounted(() => {
 
 .templateContentWrapper {
   position: relative;
-  height: 100svh;
+  height: 92.5svh;
   width: 100%;
   //background-color: green;
 }
 
-.monolith_logo_header {
-  position: absolute;
-  height: 12vh;
-  width: 12vh;
-  top: 4vh;
-  left: 2.5vh;
-  display: flex;
-  z-index: 2;
+.footerWrapper {
+  height: 7.5svh;
+  //background-color: green;
 }
+
 </style>
