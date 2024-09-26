@@ -29,7 +29,10 @@ onMounted(() => {
         </div>
       </div>
       <div class="footerWrapper">
-        
+        <div class="footerContent">
+          <a class="footerA">{{ $t('imprint') }}</a>
+          <a class="footerA">{{ $t('privacy') }}</a>
+        </div>
       </div>
     </div>
   </v-app>
@@ -43,6 +46,16 @@ onMounted(() => {
   100% {
     opacity: 1;
   }
+}
+
+a {
+  color: white;
+  font-size: 0.9rem;
+}
+
+.footerA {
+  cursor: pointer;
+ margin: 2rem;
 }
 
 .loadingWrapper {
@@ -93,8 +106,23 @@ onMounted(() => {
 }
 
 .footerWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
   height: 7.5svh;
   //background-color: green;
 }
 
+.footerContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(43, 43, 43, 0.356);
+  width: 80%;
+  height: 45%;
+  max-height: 45px;
+  border-radius: 200px;
+  margin-bottom: 20px;
+  max-width: 400px;
+}
 </style>
