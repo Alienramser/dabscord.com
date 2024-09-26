@@ -1,7 +1,7 @@
 <template>
   <div class="homePageWrapper">
     <div class="homePageAnimationWrapper">
-      <img class="homePageAnimation" src="~/assets/images/dabscordBig.webp"/>
+      <img class="homePageAnimation" width="350" height="350" alt="Dabscord Logo" src="~/assets/images/dabscordBig.webp"/>
     </div>
     <div class="homePageInviteWrapper">
       <iframe class="homePageInvite" src="https://discord.com/widget?id=1141415565366403172&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
@@ -42,6 +42,8 @@ onMounted(() => {
 }
 .homePageAnimation {
   height: 100%;
+  width: auto;
+  aspect-ratio: 1/1;
 }
 .homePageInviteWrapper{
   display: flex;
@@ -53,6 +55,8 @@ onMounted(() => {
 }
 .homePageInvite {
   height: 95%;
+  max-height: 650px;
   width: 75%;
+  max-width: 400px;
 }
 </style>
