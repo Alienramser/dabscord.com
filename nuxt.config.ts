@@ -1,6 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  app: {},
+  app: {    
+    baseURL: '/dabscord.com/' // Make sure to replace this with your actual repository name
+  },
 
   modules: ['@tresjs/nuxt', '@nuxtjs/i18n', '@nuxtjs/tailwindcss'],
 
