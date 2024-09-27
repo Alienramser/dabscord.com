@@ -21,7 +21,6 @@ onMounted(() => {
 </script>
 
 <template>
-  <v-app>
     <div class="templateWrapper">
             
       <div class="loadingWrapper">
@@ -49,7 +48,6 @@ onMounted(() => {
         </div>
       </div>
     </div>
-  </v-app>
 </template>
 
 <style scoped lang="scss">

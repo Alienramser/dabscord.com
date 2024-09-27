@@ -16,8 +16,7 @@
     "nuxt": "^3.13.0",
     "pinia": "^2.2.2",
     "vue": "latest",
-    "vue-router": "latest",
-    "vuetify-nuxt-module": "^0.18.3"
+    "vue-router": "latest"
   },
   "devDependencies": {
     "sass": "^1.79.3"
