@@ -10,4 +10,6 @@ definePageMeta({
 import homePage from '~/components/modules/home/homePage.vue'
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+
+</style>

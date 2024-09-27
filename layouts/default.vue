@@ -33,7 +33,7 @@ onMounted(() => {
         />
       </div>
       
-      <ageVerifaction v-if="!isAgeVerifiedR"/>
+      <ageVerifaction class="ageVerification" v-if="!isAgeVerifiedR"/>
 
       
       <div v-if="isAgeVerifiedR" class="contentWrapper">
@@ -70,6 +70,11 @@ a {
  margin: 2rem;
 }
 
+.ageVerification {
+  height: 100svh;
+  width: 100svw;
+}
+
 .loadingWrapper {
   display: flex;
   justify-content: center;
@@ -99,6 +104,8 @@ a {
 
 .templateWrapper {
   display: flex;
+  position: relative;
+
   flex-direction: column;
 }
 

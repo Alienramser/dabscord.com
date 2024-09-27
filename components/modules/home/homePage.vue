@@ -35,7 +35,6 @@ onMounted(() => {
   //background-color: red;
   height: 100%;
   width: 100%;
-  overflow: hidden !important;
 }
 .homePageAnimationWrapper {
   height: 40%;
