@@ -1,10 +1,19 @@
 <script setup lang="ts">
+import ageVerifaction from "~/components/core/ageVerification/ageVerification.vue"
+
+const isAgeVerified = localStorage.getItem("isVerified")
 
 onMounted(() => {
+  console.log("MOUNTED")
+
   setTimeout(() => {
     document.getElementsByClassName('loadingWrapper')[0].classList.add('loaded')
-    document.getElementsByClassName('contentWrapper')[0].classList.add('loaded')
+    //document.getElementsByClassName('contentWrapper')[0].classList.add('loaded')
     document.getElementsByClassName('loadingImage')[0].classList.add('loaded')
+
+    if(isAgeVerified === "true") {
+      document.getElementsByClassName('contentWrapper')[0].classList.add('loaded')
+    }
   }, 250)
 })
 
@@ -14,6 +23,7 @@ onMounted(() => {
 <template>
   <v-app>
     <div class="templateWrapper">
+            
       <div class="loadingWrapper">
         <img
           src="../assets/images/dabscordicon.webp"
@@ -23,15 +33,19 @@ onMounted(() => {
           class="loadingImage"
         />
       </div>
-      <div class="contentWrapper">
+      
+      <ageVerifaction v-if="(isAgeVerified === 'false' || isAgeVerified === null) && isAgeVerified !== 'true'"/>
+
+      
+      <div v-if="isAgeVerified === 'true'" class="contentWrapper">
         <div class="templateContentWrapper">
           <slot />
         </div>
-      </div>
-      <div class="footerWrapper">
-        <div class="footerContent">
-          <a class="footerA">{{ $t('imprint') }}</a>
-          <a class="footerA">{{ $t('privacy') }}</a>
+        <div class="footerWrapper">
+          <div class="footerContent">
+            <a class="footerA">{{ $t('imprint') }}</a>
+            <a class="footerA">{{ $t('privacy') }}</a>
+          </div>
         </div>
       </div>
     </div>
@@ -68,6 +82,7 @@ a {
   width: 100%;
   transition: opacity 0.5s ease;
   opacity: 100%;
+  z-index: 200;
 
   &.loaded {
     opacity: 0%;

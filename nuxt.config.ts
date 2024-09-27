@@ -3,7 +3,22 @@ export default defineNuxtConfig({
   app: {    
   },
 
-  modules: ['@tresjs/nuxt', '@nuxtjs/i18n', '@nuxtjs/tailwindcss'],
+  modules: [
+    '@tresjs/nuxt',
+    '@nuxtjs/i18n',
+    '@nuxtjs/tailwindcss',
+    '@pinia/nuxt',
+    'vuetify-nuxt-module'
+  ],
+
+  vuetify: {
+    moduleOptions: {
+      /* module specific options */
+    },
+    vuetifyOptions: {
+      /* vuetify options */
+    }
+  },
 
   // or false to disable SSR
   ssr: false,

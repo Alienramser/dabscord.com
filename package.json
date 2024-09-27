@@ -11,12 +11,18 @@
   },
   "dependencies": {
     "@nuxtjs/i18n": "^8.5.5",
+    "@pinia/nuxt": "^0.5.4",
     "@tresjs/nuxt": "^3.0.7",
     "nuxt": "^3.13.0",
+    "pinia": "^2.2.2",
     "vue": "latest",
-    "vue-router": "latest"
+    "vue-router": "latest",
+    "vuetify-nuxt-module": "^0.18.3"
   },
   "devDependencies": {
     "sass": "^1.79.3"
+  },
+  "overrides": {
+    "vue": "latest"
   }
 }
