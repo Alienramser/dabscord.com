@@ -1,4 +1,10 @@
 {
     "imprint": "Impressum",
-    "privacy": "Datenschutz"
+    "privacy": "Datenschutz",
+    "yes": "Ja",
+    "no": "Nein",
+    "ageQuestion": "Bist du 18 Jahre oder älter?",
+    "ageLegalNotice1": "Durch das Bestätigen des Alters akzeptierst du automatisch unsere ",
+    "ageLegalNotice2": "Datenschutzschutzrichtlinien",
+    "ageLegalNotice3": " inklusive der Verwendung von Cookies. Sie müssen bestätigen, dass Sie 18 Jahre oder älter sind, um diese Seite zu betreten."
 }

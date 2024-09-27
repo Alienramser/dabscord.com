@@ -1,5 +1,7 @@
 <template>
-  <!--HomePages /-->
+  <div>
+    <a>asd</a>
+  </div>
 </template>
 
 <script setup lang="ts">

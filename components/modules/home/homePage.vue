@@ -43,6 +43,7 @@ onMounted(() => {
 .homePageAnimation {
   height: 100%;
   width: auto;
+  max-width: 600px;
   aspect-ratio: 1/1;
 }
 .homePageInviteWrapper{
