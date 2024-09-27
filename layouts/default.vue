@@ -1,20 +1,20 @@
 <script setup lang="ts">
 import ageVerifaction from "~/components/core/ageVerification/ageVerification.vue"
+import { useUserStore } from '~/stores/store';
+import {ref} from "vue"
 
-const isAgeVerified = localStorage.getItem("isVerified")
+const store = useUserStore();
+
+const isAgeVerifiedR = computed(() => store.isAgeVerified)
+
+const isContentLoaded = ref(false)
 
 onMounted(() => {
   console.log("MOUNTED")
 
-  setTimeout(() => {
-    document.getElementsByClassName('loadingWrapper')[0].classList.add('loaded')
-    //document.getElementsByClassName('contentWrapper')[0].classList.add('loaded')
-    document.getElementsByClassName('loadingImage')[0].classList.add('loaded')
+  console.log(isAgeVerifiedR.value)
 
-    if(isAgeVerified === "true") {
-      document.getElementsByClassName('contentWrapper')[0].classList.add('loaded')
-    }
-  }, 250)
+  isContentLoaded.value = true
 })
 
 
@@ -23,7 +23,7 @@ onMounted(() => {
 <template>
     <div class="templateWrapper">
             
-      <div class="loadingWrapper">
+      <div v-if="!isContentLoaded" class="loadingWrapper">
         <img
           src="../assets/images/dabscordicon.webp"
           alt="Monolith Loading Logo"
@@ -33,10 +33,10 @@ onMounted(() => {
         />
       </div>
       
-      <ageVerifaction v-if="(isAgeVerified === 'false' || isAgeVerified === null) && isAgeVerified !== 'true'"/>
+      <ageVerifaction v-if="!isAgeVerifiedR"/>
 
       
-      <div v-if="isAgeVerified === 'true'" class="contentWrapper">
+      <div v-if="isAgeVerifiedR" class="contentWrapper">
         <div class="templateContentWrapper">
           <slot />
         </div>
@@ -82,28 +82,19 @@ a {
   opacity: 100%;
   z-index: 200;
 
-  &.loaded {
-    opacity: 0%;
-    z-index: -1;
-  }
+
 }
 
 .loadingImage {
   animation: pulse 1.5s infinite alternate;
 
-  &.loaded {
-    animation: none;
-    opacity: 0;
-  }
 }
 
 .contentWrapper {
   transition: ease-in-out 0.5s;
-  opacity: 0%;
+  opacity: 100%;
 
-  &.loaded {
-    opacity: 100%;
-  }
+
 }
 
 .templateWrapper {

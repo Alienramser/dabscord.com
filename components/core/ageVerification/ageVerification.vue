@@ -7,7 +7,7 @@
             </div>
 
 
-            <div v-if="notOldEnough != true" class="ageQuestionWrapper" id="ageQuestionWrapper">
+            <div v-if="!notOldEnough" class="ageQuestionWrapper" id="ageQuestionWrapper">
                 <h1 class="ageQuestion">{{ $t('ageQuestion') }}</h1>
                 <div class="ageQuestionButtons">
                     <button @click="verifyAge(true)" class="ageQuestionButton">{{ $t('yes') }}</button>
@@ -18,9 +18,10 @@
                 </div>
             </div>
 
-            <div v-if="notOldEnough === true" class="ageQuestionWrapper" id="ageQuestionWrapper">
+            <div v-if="notOldEnough" class="ageQuestionWrapper" id="ageQuestionWrapper">
                 <div class="ageLegalNoticeWrapper">
-                    <h1>NOT OLD ENOUGH</h1>
+                    <h1>{{ $t('notOE') }}</h1>
+                    <h2 class="notoldEnough">You're not old enough for our community.</h2>
                 </div>
             </div>
 
@@ -33,20 +34,27 @@
 <script setup lang="ts">
     import { useUserStore } from '~/stores/store';
 
-    //const store = useUserStore();
+    const store = useUserStore();
 
+    const oldEnough = ref(false)
     const notOldEnough = ref(false)
 
     function verifyAge(value: boolean) {
         
-        if(value === true){
-            localStorage.setItem('isVerified', "true")
-            console.log(localStorage.getItem('isVerified'))
-        }else{
-            localStorage.setItem('isVerified', "false")
-            console.log("load Page")
-            notOldEnough.value = true;
+        store.setAgeVerification(value)
+        oldEnough.value = store.isAgeVerified
+
+        console.log("VERIFY AGE")
+        console.log(value)
+
+        if(value === false) {
+            console.log("NEW MESSAGE")
+            notOldEnough.value = true
         }
+
+        
+        console.log("STORE2")
+        console.log(store.isAgeVerified)
     }
 
     function showDisclaimer() {
@@ -59,16 +67,11 @@
     }
 
     onMounted(() => {
-        /*
+
         console.log("STORE")
-        const isAgeverified2 = store.isAgeVerified
-        console.log(isAgeverified2)
+        console.log(store.isAgeVerified)
 
-        store.setAgeVerification(true)
 
-        const isAgeverified3 = store.isAgeVerified
-        console.log(isAgeverified3)
-    */
     })
 
 </script>
@@ -96,6 +99,10 @@ a {
     //background-color: green;
 }
 
+.notoldEnough {
+    padding-top: 1rem;
+}
+
 .ageVerificationWrapper {
     display: flex;
     justify-content: center;
@@ -120,10 +127,7 @@ a {
     opacity: 100%;
     transition: opacity 0.5s ease;
     
-    &.unloaded {
-    opacity: 0%;
-    z-index: -1;
-  }
+
 }
 
 .ageQuestionDisclaimerWrapper {
@@ -135,13 +139,9 @@ a {
     margin-bottom: 2vh;
     text-align: center;
     width: 90%;
-    opacity: 0%;
-    transition: opacity 0.5s ease;
-    
-    &.loaded {
     opacity: 100%;
-    z-index: -1;
-  }
+    transition: opacity 0.5s ease;
+
 }
 
 .ageQuestion {
@@ -184,6 +184,8 @@ a {
     border-radius: 20px;
 
 
+
+    /*
     .enter-from {
         transform: translateY(20vh);
         opacity: 0%;
@@ -197,6 +199,7 @@ a {
     .enter-active {
         transition: all 2s ease;
     }
+        */
 }
 
 .ageLegalNoticeWrapper {
