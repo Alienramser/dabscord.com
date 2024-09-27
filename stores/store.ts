@@ -9,6 +9,9 @@ export const useUserStore = defineStore ('user',{
             this.isAgeVerified = value
         }
     },
+    persist: {
+        storage: piniaPluginPersistedstate.localStorage(),
+    }
 })
 
 if(import.meta.hot) {
