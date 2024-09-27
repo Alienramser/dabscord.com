@@ -1,33 +1,30 @@
 <template>
     <div class="ageVerificationWrapper">
-        <div class="ageVerificationPopup">
-
-            <div class="logoPopupWrapper">
-                <img class="logoPopup" alt="Dabscord Logo" draggable="false" height="256" width="256" src="~/assets/images/dabscordMed.webp"/>
-            </div>
-
-
-            <div v-if="!notOldEnough" class="ageQuestionWrapper" id="ageQuestionWrapper">
-                <h1 class="ageQuestion">{{ $t('ageQuestion') }}</h1>
-                <div class="ageQuestionButtons">
-                    <button @click="verifyAge(true)" class="ageQuestionButton">{{ $t('yes') }}</button>
-                    <button @click="verifyAge(false)" class="ageQuestionButton">{{ $t('no') }}</button>
+        <div class="ageVerification">
+            <div class="ageVerificationPopup">
+                <div class="logoPopupWrapper">
+                    <img class="logoPopup" alt="Dabscord Logo" draggable="false" height="256" width="256" src="~/assets/images/dabscordMed.webp"/>
                 </div>
-                <div class="ageLegalNoticeWrapper">
-                    <h2 class="ageLegalNotice">{{ $t('ageLegalNotice1') }} <a href="google.com">{{ $t('ageLegalNotice2') }}</a> {{ $t('ageLegalNotice3') }}</h2>
+                <div v-if="!notOldEnough" class="ageQuestionWrapper" id="ageQuestionWrapper">
+                    <h1 class="ageQuestion">{{ $t('ageQuestion') }}</h1>
+                    <div class="ageQuestionButtons">
+                        <button @click="verifyAge(true)" class="ageQuestionButton">{{ $t('yes') }}</button>
+                        <button @click="verifyAge(false)" class="ageQuestionButton">{{ $t('no') }}</button>
+                    </div>
+                    <div class="ageLegalNoticeWrapper">
+                        <h2 class="ageLegalNotice">{{ $t('ageLegalNotice1') }} <a href="google.com">{{ $t('ageLegalNotice2') }}</a> {{ $t('ageLegalNotice3') }}</h2>
+                    </div>
+                </div>
+
+                <div v-if="notOldEnough" class="ageQuestionWrapper" id="ageQuestionWrapper">
+                    <div class="ageLegalNoticeWrapper">
+                        <h1 class="notoldEnoughH">{{ $t('notOE') }}</h1>
+                        <h2 class="notoldEnough">{{  $t('notOEd') }}</h2>
+                    </div>
                 </div>
             </div>
-
-            <div v-if="notOldEnough" class="ageQuestionWrapper" id="ageQuestionWrapper">
-                <div class="ageLegalNoticeWrapper">
-                    <h1>{{ $t('notOE') }}</h1>
-                    <h2 class="notoldEnough">You're not old enough for our community.</h2>
-                </div>
-            </div>
-
-            
-            
         </div>
+       
     </div>
 </template>
 
@@ -105,14 +102,12 @@ a {
 
 .ageVerificationWrapper {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
-    display: flex;
-    position: fixed;
-    height: 100svh;
-    width: 100svw;
-    opacity: 100%;
+  
+}
+
+.ageVerification {
+    margin: auto;
+   
 }
 
 .ageQuestionWrapper {
@@ -147,6 +142,7 @@ a {
 .ageQuestion {
     height: 100%;
     width: 100%,;
+    font-size: 3rem;
 }
 
 .ageQuestionButtons {
@@ -176,7 +172,7 @@ a {
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    width: 80%;
+    width: 80vw;
     max-width: 900px;
     max-height: 750px;
     //background-color: red;
@@ -224,5 +220,23 @@ a {
 
 .ageLegalNotice {
     //background-color: orange;
+}
+
+@media only screen and (max-height: 800px) and (orientation: portrait) {
+  .ageQuestion {
+    font-size: 2rem;
+  }
+
+  .ageLegalNotice {
+    font-size: 0.75rem;
+  }
+
+  .ageQuestionButton {
+    font-size: 1.2rem;
+  }
+
+  .notoldEnoughH {
+    font-size: 2rem;
+  }
 }
 </style>
